@@ -1,0 +1,26 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Mocap Smooth",
+	"Description": "Zero-phase smoothing for motion capture, as an Animation Modifier. Matches Rokoko Studio Preview's filter (forward-backward 2nd-order Butterworth, fc = 10.5 - slider Hz). Every apply reads from an untouched copy of the raw animation, so re-applying at a different strength lands on that strength instead of stacking.",
+	"Category": "Animation",
+	"CreatedBy": "Mad Rice (Dylan Gitalis)",
+	"CreatedByURL": "https://github.com/Dylanyz",
+	"DocsURL": "https://github.com/Dylanyz/MocapSmooth#readme",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/Dylanyz/MocapSmooth/issues",
+	"EngineVersion": "5.8.0",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "MocapSmoothEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [ "Win64" ]
+		}
+	]
+}

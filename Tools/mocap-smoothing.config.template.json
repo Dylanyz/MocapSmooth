@@ -1,0 +1,55 @@
+{
+  "_comment": "Copy to <project>/.claude/refs/mocap-smoothing.config.json and edit. Project-specific values only; nothing here belongs in the skill itself.",
+
+  "project": "PROJECT_NAME",
+  "engine": "UE 5.8",
+
+  "capture": {
+    "source": "Rokoko Smartsuit Pro II",
+    "fps": 60,
+    "_comment_fps": "The capture's native rate. The filter cutoff is specified in Hz, so this matters."
+  },
+
+  "assets": {
+    "source_anim_folder": "/Game/PROJECT/_ANIM/body/rokoko-source",
+    "retargeted_anim_folder": "/Game/PROJECT/_ANIM/body/rokoko-rtg",
+    "source_skeleton": "SK_NAME_Skeleton",
+    "target_skeleton": "metahuman_base_skel",
+    "ik_retargeter": "/Game/PROJECT/_ANIM/RTG_NAME",
+    "_comment": "Filter the SOURCE skeleton, then retarget. The retargeted skeleton is mostly derived rig."
+  },
+
+  "cache": {
+    "dir": "Saved/MocapSmooth",
+    "_comment": "Originals are cached here on first apply so re-applying never compounds. Keep out of version control; regenerable by reimporting the source FBX."
+  },
+
+  "defaults": {
+    "_comment": "Values are on Rokoko's slider scale: 0.5 to 10, higher is smoother. Cutoff in Hz = 10.5 - value. Per region: 0 = inherit full_body, -1 = off (exempt from smoothing entirely).",
+    "_comment_body": "The defaults below ARE Rokoko's 'Body' group: master everywhere, fingers exempt. Set fingers to 0 for 'Full Body'. fingers = -1 is NOT the same as hands = -1 -- the latter leaves the wrist unfiltered too.",
+    "shape": "butter",
+    "order": 2,
+    "full_body": 7.0,
+    "fingers": -1,
+    "hands": 0,
+    "upper_body": 0,
+    "lower_body": 0,
+    "smooth_root": false,
+    "smooth_pelvis_translation": true
+  },
+
+  "region_precedence": ["fingers", "hands", "upper_body", "lower_body", "full_body"],
+
+  "per_take_overrides": {
+    "_comment": "Optional. Key by asset name. Omit entirely if every take uses the defaults.",
+    "EXAMPLE_take_name": {
+      "full_body": 7.0,
+      "fingers": 0,
+      "hands": 8.5,
+      "shape_hands": "gaussian",
+      "note": "Coil Pro finger jitter on this take; Gaussian avoids the ring on the hand taps."
+    }
+  },
+
+  "notes": []
+}

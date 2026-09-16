@@ -1,0 +1,14 @@
+# UE plugin build products (rebuilt with Tools\build_mocapsmooth.ps1, see README)
+Binaries/
+Intermediate/
+# editor/plugin junk
+Saved/
+*.pdb
+__pycache__/
+*.pyc
+UE_Placeholder.uasset
+.vs/
+*.swp
+.DS_Store
+# working copy of the retired skill entry point, folded into CLAUDE.md
+.claude/refs/_skill-md-original.md

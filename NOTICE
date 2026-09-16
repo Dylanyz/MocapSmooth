@@ -1,0 +1,46 @@
+MocapSmooth
+Copyright 2026 Dylan Gitalis (Mad Rice)
+https://github.com/Dylanyz/MocapSmooth
+
+This product includes software developed by Dylan Gitalis (Mad Rice).
+
+Licensed under the Apache License, Version 2.0. See LICENSE for the full
+terms. If you redistribute MocapSmooth, in source or binary form, this
+NOTICE file must travel with it (Apache-2.0 section 4d).
+
+
+THIRD-PARTY AND TRADEMARK NOTES
+-------------------------------
+
+Rokoko, Rokoko Studio, Rokoko Studio Preview, Smartsuit and Smartgloves are
+trademarks of Rokoko Electronics ApS. This project is not affiliated with,
+endorsed by, or sponsored by Rokoko.
+
+This project contains NO Rokoko source code, binaries, or assets. The
+material in .claude/refs/rokoko-studio-preview.md and
+.claude/refs/rokoko-measurement.md is a behavioural description of a
+shipping product, obtained by observing the software's publicly observable
+outputs on a machine with a legitimate installation, for the purpose of
+interoperability. Reproducing the documented behaviour requires only
+textbook signal processing (a Butterworth low-pass filter applied forwards
+and backwards), which is not itself proprietary to any vendor.
+
+To re-run the investigation described in those files you must supply your
+own licensed Rokoko Studio Preview installation. Tools/rokoko_probe.js
+communicates with a local installation over its own inter-process interface
+and ships none of its code.
+
+Unreal Engine is a trademark of Epic Games, Inc. This project is not
+affiliated with or endorsed by Epic Games. Descriptions of Unreal Engine
+behaviour in .claude/refs/driscoll-ue-curve-editor.md,
+.claude/refs/ue-implementation.md and .claude/refs/ue-animation-modifier-build.md
+refer to publicly available engine source that Unreal licensees can read,
+and no engine source is reproduced here. The plugin's own source links
+against the Unreal Engine under the Unreal Engine EULA, as any UE plugin does.
+
+The Unreal Curve Editor workflow documented in
+.claude/refs/driscoll-ue-curve-editor.md was popularised by Charlie
+Driscoll's tutorial "Cinematic Motion Capture with Move One and MetaHuman
+Animator" (Unreal Engine 5.4). Credit for that workflow belongs to its
+author; the analysis of what the filter computes and how it compares is
+original to this project.
