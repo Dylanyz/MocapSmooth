@@ -41,8 +41,8 @@ plugin would turn each of those into a code project that prompts to compile on f
 after every engine hotfix, and refuses to open without a working toolchain. Against that, the gain
 is hot-patching for the subset of changes that are body-only.
 
-Measured on the 9950X3D: a full clean `BuildPlugin` of this one module is well under two minutes,
-and the compile itself is seconds. Build time is not the friction. The restart is, and the restart
+Measured on the 9950X3D, 2026-09-16: a full clean `BuildPlugin` of this one module is **39 s** end to end,
+of which the compile is ~30 s. Build time is not the friction. The restart is, and the restart
 is unavoidable for the changes that add controls.
 
 **Decision, 2026-09-16: keep the engine-wide junction, same as DynamicLens.** Revisit only if the
