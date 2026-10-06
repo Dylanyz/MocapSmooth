@@ -12,3 +12,6 @@ UE_Placeholder.uasset
 .DS_Store
 # working copy of the retired skill entry point, folded into CLAUDE.md
 .claude/refs/_skill-md-original.md
+
+# per-machine Claude Code settings (shared auto-memory pool); must stay untracked
+.claude/settings.local.json
