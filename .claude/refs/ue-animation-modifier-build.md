@@ -17,7 +17,7 @@ The Python route is kept only for a project with no C++ toolchain. It carries tw
 
 ## Installing the plugin
 
-1. Copy this repo (or a release zip) to `<Project>/Plugins/MocapSmooth/` — or junction it into the engine, see `../rules/build-and-install.md`.
+1. Copy this repo (or a release zip) to `<Project>/Plugins/MocapSmooth/` — or junction it into the engine (`README.md`, Install). Never both.
 2. Add `{"Name": "MocapSmooth", "Enabled": true}` to the `.uproject`'s `Plugins` array. (Project
    plugins are discovered anyway, but be explicit.)
 3. Launch and check: right-click an AnimSequence → Animation Modifier(s) → Add → **Mocap Smooth**.

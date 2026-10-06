@@ -10,18 +10,20 @@ https://github.com/Dylanyz/MocapSmooth.
 install is a **directory junction to this folder**, not a copy. Docs and `Tools/` edits are live;
 only C++ needs a build, and a build needs a restart.
 
+Building, installing, Live Coding, licensing pattern and the wrap-up checklist are shared by all of Dylan's
+plugins and live in the plugin hub (`../CLAUDE.md`, loaded automatically, and `../.claude/refs/`). This
+file holds only what is MocapSmooth's.
+
 ## Hard rules
 
-1. **Never restart, close or relaunch the Unreal editor without asking Dylan and getting a yes.**
-   He is usually mid-shot with unsaved work. `.claude/rules/editor-restarts.md`.
-2. **Never touch `Saved/` or `Intermediate/`**, here or in any Unreal project. `Saved/MocapSmooth/`
-   in a project holds the protected originals; deleting it loses the way back to the raw take.
-3. **Ask before deleting anything**, with specifics on what and why.
-4. **No Rokoko or Epic code, ever.** The spec here is a clean-room behavioural description.
+1. **`Saved/MocapSmooth/` in a project holds the protected originals.** Never touch it (or any
+   `Saved/`, `Intermediate/`); deleting it loses the way back to the raw take.
+2. **No Rokoko or Epic code, ever.** The spec here is a clean-room behavioural description.
    `.claude/rules/licensing-and-credits.md`.
-5. **`Tools/smooth_core.py` and `MocapSmoothFilter.cpp` are the same filter, line for line.**
-   Change one, change the other in the same commit, and re-run `MocapSmooth.SelfTest`.
-6. **Never filter in place without a way back**, and never let a capture overwrite a cached
+3. **`Tools/smooth_core.py` and `MocapSmoothFilter.cpp` are the same filter, line for line.**
+   Change one, change the other in the same commit, re-vendor `smooth_core.py` into
+   `Tools/python_fallback/mocap_smooth/`, and re-run `MocapSmooth.SelfTest`.
+4. **Never filter in place without a way back**, and never let a capture overwrite a cached
    original. The refusal guard in `MocapSmoothCache` exists for that; do not weaken it.
 
 ## Start here (progressive disclosure)
@@ -34,11 +36,33 @@ only C++ needs a build, and a build needs a restart.
 - UE 5.8 API facts, the modifier design, region masking, non-compounding re-apply → `.claude/refs/ue-implementation.md`
 - **Building, installing, every trap hit, what to verify** → `.claude/refs/ue-animation-modifier-build.md`
 - Every approach weighed and why each was kept or dropped → `.claude/refs/alternatives-considered.md`
-- Can it be iterated without a restart? (Live Coding, engine vs project layout) → `.claude/refs/live-coding.md`
-- Keeping these docs true → `.claude/refs/maintenance.md`
+- Can it be iterated without a restart? (Live Coding, engine vs project layout) → plugin hub `refs/live-coding.md`
+- Keeping these docs true → plugin hub `refs/maintenance.md`, then this repo's `.claude/refs/maintenance.md`
 
-Behaviour rules auto-load from `.claude/rules/`: editor restarts, build/install, the update runbook,
-licensing. Read them; they are the ones that bite.
+`.claude/rules/licensing-and-credits.md` auto-loads: the clean-room framing. Read it.
+
+## Iterating ("update the plugin")
+
+Start with `Tools\build_mocapsmooth.ps1 -Status`. Then say which kind of change it is:
+
+| If the change is | Then |
+|---|---|
+| Docs, `README.md`, `.claude/` | commit. Done. |
+| `Tools/smooth_core.py` or the Python fallback | re-copy the vendored `smooth_core.py` into `Tools/python_fallback/mocap_smooth/`, run `python Tools/smooth_core.py` (self-test). Done, no restart. |
+| Anything in `Source/` | build, then install (plugin hub `refs/build-install.md`; closing the editor: `/ue-agent-control`). If the C++ filter changed, `smooth_core.py` changes identically (hard rule 3). |
+
+**After an install:** `MocapSmooth.SelfTest` in the console; all six checks must print `ok` (expected
+numbers in `.claude/refs/ue-animation-modifier-build.md`). Then apply to a scratch duplicate of a real take:
+the same settings re-applied are bit-identical, and Revert lands on 0.0000°. A renamed `UPROPERTY` loses its
+value on every asset that carries the modifier: say so, and re-set it there.
+
+**Releasing:** bump `VersionName` in the `.uplugin` and cut a GitHub release with `Binaries/Win64` attached
+when the change is user-visible.
+
+| Failure (MocapSmooth only; shared rows: plugin hub `build-install.md`) | Cause | Fix |
+|---|---|---|
+| Plugin silently absent from the Add Modifier menu | loaded at both an engine path and a project path | delete the project copy |
+| `Mocap Smooth` applies but the asset will not save | the *Python* modifier class is attached, not this one | right-click → Remove Modifier(s), answer **No** to revert; see `.claude/refs/ue-animation-modifier-build.md` |
 
 ## Layout
 
@@ -122,7 +146,7 @@ shifts motion later in time and breaks body-to-face sync. `.claude/refs/alternat
 ## Installing into a project that is not on this machine
 
 1. Release zip or clone → `<Project>/Plugins/MocapSmooth/`, or junction it into the engine
-   (`.claude/rules/build-and-install.md`). Never both.
+   (`README.md`, Install). Never both.
 2. If the shipped `Binaries/Win64/UnrealEditor.modules` `BuildId` matches the engine, it loads
    as-is, Blueprint-only projects included. Otherwise one compile + restart.
 3. Right-click an AnimSequence → Animation Modifier(s) → Add → **Mocap Smooth**.

@@ -36,7 +36,7 @@ source, so Ctrl+Alt+F11 ignores it entirely.
 
 ## Why the engine layout stays for Dylan
 
-21 of the 22 Unreal projects on his machine are Blueprint-only; only CitySample is C++. A project
+22 of the 23 Unreal projects on his machine are Blueprint-only (2026-10-06); only CitySample is C++. A project
 plugin would turn each of those into a code project that prompts to compile on first launch and
 after every engine hotfix, and refuses to open without a working toolchain. Against that, the gain
 is hot-patching for the subset of changes that are body-only.
@@ -59,8 +59,7 @@ Ctrl+Alt+F11, and re-junction when done. Do not half-do it.
   build at all. It is slower and carries two known bugs, but for a "does this cutoff look right on
   this take" question it answers without a restart.
 - **The build is safe while he works.** Build early, let the package wait in `%TEMP%\msb`, and
-  install on whatever restart he was going to do anyway. That is the whole point of
-  `../rules/updating-the-plugin.md`.
+  install on whatever restart he was going to do anyway.
 
 ## Do not reach for the DLL-rename trick
 

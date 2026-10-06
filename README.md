@@ -174,7 +174,7 @@ Option 2).
 | [Tools/smooth_core.py](Tools/smooth_core.py) | The filter. numpy only, no scipy. Self-testing. Runs unchanged inside Unreal's editor Python, Blender, or standalone |
 | [Tools/rokoko_probe.js](Tools/rokoko_probe.js) | Drives a local Rokoko engine over JSON-RPC to re-verify the spec |
 | [Tools/python_fallback/](Tools/python_fallback/) | The same modifier in editor Python + Blueprint, for a project with no C++ toolchain. Slower, two known bugs |
-| `.claude/rules/` | How the author's agents are expected to behave in this repo (never restart the editor unasked, build/install cycle, licensing) |
+| `.claude/rules/` | How the author's agents are expected to behave in this repo (the clean-room licensing rule) |
 
 ## Quick start, outside Unreal
 

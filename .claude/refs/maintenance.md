@@ -1,38 +1,32 @@
 # Maintenance — keeping these docs true
 
-Last updated: 2026-09-16
+Last updated: 2026-10-06
 
 MocapSmooth is small, but its value is the *documentation*: measured facts about other people's
-smoothers and about UE's animation API. Those go stale quietly. The checklist below is MANDATORY
-after any session that changed the plugin or learned something about it.
+smoothers and about UE's animation API. Those go stale quietly. After any session that changed the
+plugin or learned something about it, run the shared wrap-up checklist in the plugin hub
+(`refs/maintenance.md`: README and refs agree, prune, project facts stay out, script `Verified:` lines),
+then these MocapSmooth items. Both are mandatory.
 
-## Wrap-up checklist
+## MocapSmooth checklist
 
-1. **Plugin behaviour changed?** Update the affected file in `.claude/refs/` *and* `README.md`.
-   The README is the public explanation; these refs are the working notes. They must not disagree.
-2. **New control added?** Add it to `README.md`'s property table with what it is *for*, not just
+1. **New control added?** Add it to `README.md`'s property table with what it is *for*, not just
    its range, and keep the tooltip in `MocapSmoothModifier.h` saying the same thing.
-3. **Filter maths changed?** Change `Tools/smooth_core.py` and `Source/.../MocapSmoothFilter.cpp`
+2. **Filter maths changed?** Change `Tools/smooth_core.py` and `Source/.../MocapSmoothFilter.cpp`
    in the same commit, re-vendor `smooth_core.py` into `Tools/python_fallback/mocap_smooth/`, and
    update the expected `SelfTest` numbers in `ue-animation-modifier-build.md`.
-4. **New UE API fact or trap** goes in `ue-implementation.md` (API) or
-   `ue-animation-modifier-build.md` (build/traps), with the symptom that revealed it. These are the
-   expensive facts, and the ones most likely to be "simplified" away by a later agent.
-5. **A new smoothing system characterised** (Move, Vicon, Xsens, Blender, Maya…) gets its own
+3. **New UE API fact or trap** goes in `ue-implementation.md` (API) or
+   `ue-animation-modifier-build.md` (build/traps), with the symptom that revealed it; an engine-true
+   one also goes to `/ue-docs`. These are the expensive facts, the ones most likely to be
+   "simplified" away by a later agent.
+4. **A new smoothing system characterised** (Move, Vicon, Xsens, Blender, Maya…) gets its own
    `refs/<vendor>-*.md` with method, numbers and a **measured / from source / inferred** tag on every
    claim, plus a trademark line in `NOTICE` in the same commit.
-6. **A rule Dylan states about how to work** goes in `.claude/rules/`, quoted, with the why.
-   Refs describe the plugin; rules constrain the agent.
-7. **Build recipe changed or verified on a new engine?** Update the header block and the `Verified:`
-   date in `Tools/build_mocapsmooth.ps1`, and the `BuildId` in `../rules/build-and-install.md`.
-8. **Prune** what the session disproved. Delete it, do not strike it through, and log it below.
-9. **Project-specific facts never live here.** Which takes a film smoothed at which slider belongs
-   in that film project's own `.claude/`. This repo documents the plugin only.
+5. **Which takes a film smoothed at which slider** belongs in that film project's own `.claude/`.
 
 ## Watch list
 
-- **Engine version.** Everything here is UE 5.8, junction at
-  `UE_5.8\Engine\Plugins\Marketplace\MocapSmooth`. Moving to 5.9 needs a new junction, a rebuild,
+- **Engine version.** Everything here is UE 5.8. Moving to 5.9 needs a new junction, a rebuild,
   and a re-check of `GetNumberOfKeys() == GetNumberOfFrames() + 1` and the
   `IAnimationDataModel::GetBoneTrackTransforms` signature, the two version-fragile facts.
 - **Open question from the measurement:** the Rokoko spec was measured on a 60 fps clip; whether
@@ -41,14 +35,15 @@ after any session that changed the plugin or learned something about it.
   kept only for toolchain-less projects. If it is ever fixed, say so in
   `ue-animation-modifier-build.md`; if it is ever dropped, delete `Tools/python_fallback/` and the
   fallback paragraphs, not just the folder.
-- **Licence.** Apache-2.0. MPL-2.0 is a one-file swap if Dylan ever wants modifications forced
-  back open.
-- **Discoverability.** A `CLAUDE.md` in this repo only loads when the working directory is inside
-  it. Agents working in a *film* project need a pointer there; CitySample has one. Add one to each
-  new film project rather than duplicating any of this content into it.
 
 ## Log
 
+- 2026-10-06 — **Moved into the plugin hub** (`Desktop\Coding\ueplugins\MocapSmooth`, junction
+  re-pointed). The shared build/install, editor-restart and update-runbook rules were removed from
+  `.claude/rules/` (now plugin hub `refs/` and `/ue-agent-control` `launch-close.md`); the
+  MocapSmooth-only parts moved into `CLAUDE.md` "Iterating". `Tools/build_mocapsmooth.ps1`
+  regenerated from the shared template (gains the robocopy exit-code guard and `UnrealEditor-Cmd`
+  detection).
 - 2026-09-16 — **Repo created; the `/mocap-smoothing` user-scope skill retired.** Everything the
   skill held (SKILL.md → `CLAUDE.md`, `references/` → `.claude/refs/`, `scripts/` and `templates/`
   → `Tools/`, `ue/mocap_smooth/` → `Tools/python_fallback/`, `ue/MocapSmooth/` → the repo root)
