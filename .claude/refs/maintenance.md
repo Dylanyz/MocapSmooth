@@ -36,6 +36,13 @@ then these MocapSmooth items. Both are mandatory.
   `ue-animation-modifier-build.md`; if it is ever dropped, delete `Tools/python_fallback/` and the
   fallback paragraphs, not just the folder.
 
+## Next (for the next agent working here)
+
+- **Visible credit in the plugin (CPAL section 14 / LICENSE Exhibit B), deferred 2026-10-06.** Show
+  "Dylan Gitalis · https://youtube.com/@madricetv" with a link to https://github.com/Dylanyz/MocapSmooth
+  prominently in the plugin's UI (the Mocap Smooth modifier's Details panel) and log it once at module
+  startup. C++ change: build, then install when the editor is free. Details: plugin hub `refs/licensing.md`.
+
 ## Log
 
 - 2026-10-06 — **Moved into the plugin hub** (`Desktop\Coding\ueplugins\MocapSmooth`, junction

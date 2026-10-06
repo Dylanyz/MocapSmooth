@@ -226,4 +226,12 @@ the filter, change `Tools/smooth_core.py` and `MocapSmoothFilter.cpp` together a
 
 ## License
 
-Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+**Source-available, free for filmmakers.** CPAL-1.0 with the Commons Clause: see [LICENSE](LICENSE) and
+[NOTICE](NOTICE). Use MocapSmooth for anything, paid and monetized films included, with no credit owed in
+your work. Modify it privately however you like. If you publish or share a modified copy, it stays under
+this licence with its source and keeps the credit below. Nobody may sell or repackage it.
+
+Dylan Gitalis · [youtube.com/@madricetv](https://youtube.com/@madricetv) ·
+[github.com/Dylanyz/MocapSmooth](https://github.com/Dylanyz/MocapSmooth)
+
+Releases before 2026-10-06 were Apache-2.0 and stay under that licence.

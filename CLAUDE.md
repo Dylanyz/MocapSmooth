@@ -3,7 +3,7 @@
 A C++ UE 5.8 editor plugin by Dylan Gitalis (Mad Rice). Right-click an AnimSequence → Animation
 Modifier(s) → Add → **Mocap Smooth**, set a strength, Apply. It reproduces Rokoko Studio Preview's
 smoothing filter exactly (reverse-engineered, then measured to 0.016–0.19° mean error) and never
-compounds: every apply reads from a protected copy of the raw take. Open source, Apache-2.0, at
+compounds: every apply reads from a protected copy of the raw take. Source-available (CPAL-1.0 + Commons Clause), at
 https://github.com/Dylanyz/MocapSmooth.
 
 **This repo *is* the installed plugin.** `Engine\Plugins\Marketplace\MocapSmooth` in the engine

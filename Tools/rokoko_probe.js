@@ -20,7 +20,8 @@
  *   ROKOKO_APPDATA  directory the engine uses for its Scenes folder.
  *                   Point this at a sandbox so your real scenes are untouched.
  *
- * SPDX-License-Identifier: Apache-2.0
+ * Copyright (c) 2026 Dylan Gitalis. Source-available under CPAL-1.0 with the Commons Clause; see LICENSE.
+ * SPDX-License-Identifier: CPAL-1.0 AND LicenseRef-Commons-Clause-1.0
  */
 
 const { spawn } = require("child_process");
